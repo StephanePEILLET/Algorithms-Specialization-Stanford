@@ -1,6 +1,6 @@
 # Algorithms Specialization - Stanford University 
 
-This repository contains slides and algorithm implementations from the [Algorithms Specialization offered by Stanford University on Coursera.](https://www.coursera.org/specializations/algorithms#courses)
+This repository contains slides and implementations in Python of the [Algorithms Specialization offered by Stanford University](https://www.coursera.org/specializations/algorithms#courses) on Coursera.
 
 ## 1. Divide and Conquer 
 ###### [Link](https://www.coursera.org/learn/algorithms-divide-conquer)
