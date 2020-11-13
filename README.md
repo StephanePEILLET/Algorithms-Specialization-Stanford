@@ -1,6 +1,6 @@
 # Algorithms Specialization - Stanford University 
 
-This repository contains slides and algorithm implementations from the Algorithms Specialization offered by Stanford University on Coursera.[a link](https://www.coursera.org/specializations/algorithms#courses)
+This repository contains slides and algorithm implementations from [the Algorithms Specialization offered by Stanford University on Coursera.](https://www.coursera.org/specializations/algorithms#courses)
 
 ## 1. Divide and Conquer
   The primary topics in this part of the specialization are: asymptotic ("Big-oh") notation, sorting and searching, divide and conquer (master method, integer and matrix multiplication, closest pair), and randomized algorithms (QuickSort, contraction algorithm for min cuts).
