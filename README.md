@@ -9,7 +9,7 @@ This repository contains slides and implementations of the [Algorithms Specializ
 
 ## 2. Graph Search 
 
-  The topics in this part on the specialization graph are: data structures (heaps, balanced search trees, hash tables, bloom filters), graph primitives (applications of breadth-first and depth-first search, connectivity, shortest paths), and their applications (ranging from deduplication to social network analysis).
+  The topics in this part on the specialization are: data structures (heaps, balanced search trees, hash tables, bloom filters), graph primitives (applications of breadth-first and depth-first search, connectivity, shortest paths), and their applications (ranging from deduplication to social network analysis).
 ###### [Link](https://www.coursera.org/learn/algorithms-graphs-data-structures)
   
 ## 3.  Greedy Algorithms 
