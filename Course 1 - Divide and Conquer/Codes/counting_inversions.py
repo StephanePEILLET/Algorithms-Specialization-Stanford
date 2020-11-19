@@ -1,12 +1,11 @@
-from mergesort import split, swap_sort, merge_sort
-
 def merge_and_count(A:list, B:list, verbose:bool=False)->(list, int):
     '''
         Merge two lists in an sorted output and count the number of inversions between the splits of a list.
     '''
     n = len(A)+len(B)
     count = 0
-    pairs = []
+    if verbose: 
+        pairs = []
     output = [0]* n
     i,j = 0, 0
     
@@ -18,8 +17,9 @@ def merge_and_count(A:list, B:list, verbose:bool=False)->(list, int):
             else: # B[j] < A[i]
                 output[k] = B[j]
                 count += len(A) - i 
-                for x in range(len(A) - i):
-                    pairs.append((B[j], A[i + x]))
+                if verbose: 
+                    for x in range(len(A) - i):
+                        pairs.append((B[j], A[i + x]))
                 j += 1
         else:
             if i == len(A):
@@ -34,41 +34,15 @@ def merge_and_count(A:list, B:list, verbose:bool=False)->(list, int):
     
     return output, count
 
-def count_split_inv(input_list:list, verbose=False)->(list, int):
-    '''
-        Function to sort a list with merge sort paradigme and count split inversions.
-    '''
-    n = len(input_list)
-    first_half, second_half = split(input_list)
-    if n % 2 == 0:
-        if n//2 == 2:
-            first_half, second_half = swap_sort(first_half), swap_sort(second_half)
-        else:
-            first_half, second_half = merge_sort(first_half), merge_sort(second_half)
-    else:
-        # first_half is even and second_half is odd
-        if len(first_half) == 1:
-            second_half = swap_sort(second_half)
-        elif len(first_half) == 2:
-            first_half = swap_sort(first_half)
-            second_half = merge_sort(second_half)
-        else:
-            first_half, second_half = merge_sort(first_half), merge_sort(second_half)
-    
-    output, count = merge_and_count(first_half, second_half, verbose=verbose)
-    return output, count
-
-def sort_and_count(A:list)->int:
+def sort_and_count(inputs:list)->int:
     '''
         Count the number of inversions in a list. 
     '''
-    n = len(A)
-    if n < 2:
-        return 0    
+    n = len(inputs)
+    if n == 1:
+        return inputs, 0    
     else:
-        first_half, second_half = split(A)
-        X = sort_and_count(first_half) 
-        Y = sort_and_count(second_half) 
-        _, Z = count_split_inv(A)    
-        
-    return X+Y+Z
+        left, X = sort_and_count(inputs[:n//2]) 
+        rigth, Y = sort_and_count(inputs[n//2:]) 
+        result, Z = merge_and_count(left, rigth)    
+    return result, X+Y+Z

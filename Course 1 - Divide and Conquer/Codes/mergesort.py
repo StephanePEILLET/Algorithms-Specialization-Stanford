@@ -1,21 +1,3 @@
-def split(input_list:list)->(list, list):
-    '''
-        Split a list in two parts
-    '''
-    n = len(input_list)
-    return input_list[:n//2], input_list[n//2:]
-
-def swap_sort(A:list)->list:
-    '''
-        Sort a list of length 2 by comparing and swapping.
-    '''
-    output = [0,0]
-    if A[0] < A[1]:
-        output = [A[0],A[1]]
-    else:
-        output = [A[1],A[0]]
-    return output
-
 def merge(A:list, B:list)->list:
     '''
         Merge two lists in an sorted output.
@@ -41,26 +23,33 @@ def merge(A:list, B:list)->list:
                 i += 1
     return output
 
-def merge_sort(input_list:list)->list:
+'''
+With tail recursion -> storing the values into the input of 
+the recursive function. Python isn't really beneficial. However,
+tail recursions are often more easier to debug than traditional 
+recursions, so we did gain a bit by making it tail recursive.
+'''
+# With tail recursion
+def mSort_T(list1:list, list2:list, sortedL:list=[])->list:
     '''
-        Function to sort a list with merge sort paradigme with o(n * log(n) complexity)
+        Merge two list already sorted in the right order with tail recursion.
     '''
-    n = len(input_list)
-    first_half, second_half = split(input_list)
-    if n % 2 == 0:
-        if n//2 == 2:
-            first_half, second_half = swap_sort(first_half), swap_sort(second_half)
-        else:
-            first_half, second_half = merge_sort(first_half), merge_sort(second_half)
+    if len(list1)==0 or len(list2)==0:
+        return sortedL + list1 if len(list2)==0 else sortedL + list2 
+    elif list1[0] < list2[0]:
+        return mSort_T(list1[1:], list2, sortedL+[list1[0]])
     else:
-        # first_half is even and second_half is odd
-        if len(first_half) == 1:
-            second_half = swap_sort(second_half)
-        elif len(first_half) == 2:
-            first_half = swap_sort(first_half)
-            second_half = merge_sort(second_half)
-        else:
-            first_half, second_half = merge_sort(first_half), merge_sort(second_half)
-
-    output = merge(first_half, second_half)
-    return output
+        return mSort_T(list1, list2[1:], sortedL+[list2[0]])
+    
+    
+def mergeSort(inputs:list, f_sort:callable=mSort_T)->list:
+    '''
+        MergeSort algorithm on an input list.
+    '''
+    n = len(inputs)
+    if n == 1:
+        return inputs
+    else:
+        left = mergeSort(inputs[:n//2])
+        right = mergeSort(inputs[n//2:])
+        return f_sort(left, right)
