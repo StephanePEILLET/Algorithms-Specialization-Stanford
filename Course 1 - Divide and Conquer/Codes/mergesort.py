@@ -5,7 +5,6 @@ def split(input_list:list)->(list, list):
     n = len(input_list)
     return input_list[:n//2], input_list[n//2:]
 
-
 def swap_sort(A:list)->list:
     '''
         Sort a list of length 2 by comparing and swapping.
