@@ -6,7 +6,7 @@ def merge_and_count(A:list, B:list, verbose:bool=False)->(list, int):
     count = 0
     if verbose: 
         pairs = []
-    output = [0]* n
+    output = [0]*n
     i,j = 0, 0
     
     for k in range(n):
@@ -33,8 +33,9 @@ def merge_and_count(A:list, B:list, verbose:bool=False)->(list, int):
         print('Inversion pairs: ', pairs)
     
     return output, count
-
-def sort_and_count(inputs:list)->int:
+    
+    
+def sort_and_count(inputs:list, mergeCount:callable=merge_and_count, verbose:bool=False)->(list, int):
     '''
         Count the number of inversions in a list. 
     '''
@@ -44,5 +45,5 @@ def sort_and_count(inputs:list)->int:
     else:
         left, X = sort_and_count(inputs[:n//2]) 
         rigth, Y = sort_and_count(inputs[n//2:]) 
-        result, Z = merge_and_count(left, rigth)    
+        result, Z = mergeCount(left, rigth, verbose=verbose)    
     return result, X+Y+Z
