@@ -10,13 +10,13 @@ def partition(inputs:list, idx_pivot:int)->(list, int):
         Partition an input list from the indices begin to end. 
     '''
     pivot = inputs[idx_pivot]
-    inputs[idx_pivot], inputs[0] = inputs[0], inputs[idx_pivot] #Place the pivot as the first element in the list
-    i = 1 # Limit between numbers with a value lower or higher than the pivot
+    inputs[idx_pivot], inputs[0] = inputs[0], inputs[idx_pivot] 
+    i = 1 
     for j in range(1,len(inputs)):
         if inputs[j] < pivot:
             inputs[i], inputs[j] = inputs[j], inputs[i] 
             i+= 1 
-    inputs[0], inputs[i-1] = inputs[i-1], inputs[0] # Switch the pivot at the end of the set of elements lower than pivot
+    inputs[0], inputs[i-1] = inputs[i-1], inputs[0] 
     return inputs, i-1 
 
 def quicksort(inputs:list)->list:
