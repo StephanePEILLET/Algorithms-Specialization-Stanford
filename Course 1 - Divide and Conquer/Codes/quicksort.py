@@ -7,7 +7,7 @@ def choose_pivot(inputs:list)->int:
 
 def partition(inputs:list, idx_pivot:int)->(list, int):
     '''
-        Partition an input list from the indices begin to end. 
+        Partition an input list with a selected pivot.
     '''
     pivot = inputs[idx_pivot]
     inputs[idx_pivot], inputs[0] = inputs[0], inputs[idx_pivot] 
