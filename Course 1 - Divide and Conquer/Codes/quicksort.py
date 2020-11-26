@@ -1,33 +1,34 @@
 def choose_pivot(inputs:list)->int:
     '''
-    Return the indice of the randomly selected pivot in the input list.
+        Return the indice of the randomly selected pivot in the input list.
     '''
     import random
-    return random.choice(range(len(inputs)))
+    return random.choice(range(len(inputs)))        
 
-def partition(inputs:list, begin:int, end:int)->list:
+def partition(inputs:list, idx_pivot:int)->(list, int):
     '''
-    Partition an input list from the indices begin to end. 
+        Partition an input list from the indices begin to end. 
     '''
-    pivot = inputs[begin]
-    i = begin+1
-    for j in range(begin+1, end):
+    pivot = inputs[idx_pivot]
+    inputs[idx_pivot], inputs[0] = inputs[0], inputs[idx_pivot] #Place the pivot as the first element in the list
+    i = 1 # Limit between numbers with a value lower or higher than the pivot
+    for j in range(1,len(inputs)):
         if inputs[j] < pivot:
-            swap(A[j], A[i])
-            i+= 1
-    swap(A[l], A[i-1])
-    return inputs    
+            inputs[i], inputs[j] = inputs[j], inputs[i] 
+            i+= 1 
+    inputs[0], inputs[i-1] = inputs[i-1], inputs[0] # Switch the pivot at the end of the set of elements lower than pivot
+    return inputs, i-1 
 
 def quicksort(inputs:list)->list:
     '''
-    Sort an algorithm with the quicksort paradigm.
-    '''                     
+        Sort an algorithm with the quicksort paradigm.
+    '''  
     n = len(inputs)
-    if n == 1:
+    if n < 1:
         return inputs
     else:
         idx_pivot = choose_pivot(inputs)
-        partition(inputs, 0, idx_pivot) # left partition
-        partition(inputs, idx_pivot, n) # right partition                   
-        quicksort(inputs[0, idx_pivot-1])
-        quicksort(inputs[idx_pivot+1, n])
+        inputs, idx_pivot = partition(inputs, idx_pivot) 
+        inputs[:idx_pivot] = quicksort(inputs[:idx_pivot])        
+        inputs[idx_pivot+1:] = quicksort(inputs[idx_pivot+1:])
+        return inputs
