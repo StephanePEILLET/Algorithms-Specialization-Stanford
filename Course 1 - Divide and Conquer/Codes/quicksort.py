@@ -8,7 +8,7 @@ def median_of_three(inputs:list)-> int:
 
 def choose_pivot(inputs:list, select_pivot:str='random')->int:
     '''
-        Return the indice of a randomly selected pivot from the input list.
+        Return the indice of a pivot from the input list with a selected method.
     '''
     if select_pivot == 'median_of_three':
         return median_of_three(inputs)
