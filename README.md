@@ -5,10 +5,11 @@ This repository contains slides and implementations of the [Algorithms Specializ
 ## 1. Divide and Conquer 
 
   The primary topics in this part of the specialization are: asymptotic ("Big-oh") notation, sorting and searching, divide and conquer (master method, integer and matrix multiplication, closest pair), and randomized algorithms (QuickSort, contraction algorithm for min cuts).
-###### [Karatsuba](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/karatsuba.py)
-###### [MergeSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/mergesort.py)
-###### [Counting Inversions](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/counting_inversions.py)
-###### [QuickSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/quicksort.py)
+
+1.[Karatsuba](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/karatsuba.py)
+2.[MergeSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/mergesort.py)
+3.[Counting Inversions](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/counting_inversions.py)
+4.[QuickSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/quicksort.py)
 
 ## 2. Graph Search 
 
