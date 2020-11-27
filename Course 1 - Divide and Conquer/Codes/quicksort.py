@@ -66,3 +66,20 @@ def quicksort_with_count(inputs:list, select_pivot:str)->(list, int):
         inputs[idx_pivot+1:], c2 = quicksort_with_count(inputs[idx_pivot+1:], select_pivot)
         count += (c1+c2)
         return inputs, count
+    
+def randomized_selection(inputs:list, index:int, select_pivot:str='random')->int:
+    '''
+        Return the ith bigger element of the ith index with randomized selection method.
+    '''  
+    n = len(inputs)
+    if n == 1:
+        return inputs[0]
+    else:
+        idx_pivot = choose_pivot(inputs, select_pivot)
+        inputs, idx_pivot = partition(inputs, idx_pivot) 
+        if idx_pivot == index:
+            return inputs[idx_pivot]
+        elif idx_pivot > index:
+            return randomized_selection(inputs[:idx_pivot], index)
+        else:
+            return randomized_selection(inputs[idx_pivot:], index-idx_pivot)
