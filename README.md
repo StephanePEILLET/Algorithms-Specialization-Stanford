@@ -6,11 +6,11 @@ This repository contains slides and implementations of the [Algorithms Specializ
 
   The primary topics in this part of the specialization are: asymptotic ("Big-oh") notation, sorting and searching, divide and conquer (master method, integer and matrix multiplication, closest pair), and randomized algorithms (QuickSort, contraction algorithm for min cuts).
 
-1. [Karatsuba](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/karatsuba.py)  
-2. [MergeSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/mergesort.py)  
-3. [Counting Inversions](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/counting_inversions.py)  
-4. [QuickSort](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/quicksort.py)
-5. [KargerMinCut](http://localhost:8888/edit/Course%201%20-%20Divide%20and%20Conquer/Codes/karger.py)
+1. [Karatsuba](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/karatsuba.py)  
+2. [MergeSort](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/mergesort.py)  
+3. [Counting Inversions](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/counting_inversions.py)  
+4. [QuickSort](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/quicksort.py)
+5. [KargerMinCut](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/karger.py)
 
 ## 2. [Graph Search](https://www.coursera.org/learn/algorithms-graphs-data-structures) 
 
