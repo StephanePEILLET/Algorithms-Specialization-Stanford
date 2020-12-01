@@ -11,7 +11,7 @@ This repository contains slides and implementations of the [Algorithms Specializ
 2. [MergeSort](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/mergesort.py)  
 3. [Counting Inversions](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/counting_inversions.py)  
 4. [QuickSort](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/quicksort.py)
-5. [KargerMinCut](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/karger.py)
+5. [Karger(contraction algorithm for min cuts)](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%201%20-%20Divide%20and%20Conquer/Codes/karger.py)
 
 ## 2. [Graph Search](https://www.coursera.org/learn/algorithms-graphs-data-structures) 
 
