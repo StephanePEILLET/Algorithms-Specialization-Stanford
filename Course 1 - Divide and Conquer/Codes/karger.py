@@ -3,12 +3,10 @@ def kargerMinCut(graph:dict, verbose:bool=False)->int:
         Cut a graph in order to find minCuts with Karger algorithm.
     '''
     import random
-    global result
-
+    
     n = len(graph)
     if n == 2:
-        result = len(graph[next(iter(graph))])
-        return result
+        return len(graph[next(iter(graph))])
     else:
         # Select randomly an edge (two nodes) in the graph
         n1_to_cut = random.choice(list(graph.keys()))        
