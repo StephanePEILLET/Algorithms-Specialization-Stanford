@@ -22,7 +22,7 @@ This repository contains slides and implementations of the [Algorithms Specializ
 2. [Dijkstra's Shortest Path Algorithm](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/djikstra.py)
 3. [Median Maintenance Using Heaps](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/median_maintenance.py)
 4. [Brutal Force Implementation Of Two Sum Problem Using Hashset](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_hashset.py)
-5. [Fast Implementation Of Two Sum Problem Using Sorted Array And Other Tricks](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_array.py)
+5. [Fast Implementation Of Two Sum Problem Using Sorted Array](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_array.py)
 
 ## 3. [Greedy Algorithms](https://www.coursera.org/learn/algorithms-greedy)
 
