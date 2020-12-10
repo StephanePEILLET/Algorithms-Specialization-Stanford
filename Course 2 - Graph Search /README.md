@@ -6,7 +6,7 @@
 1. [Strongly Connected Components](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/SCC.py)
 2. [Dijkstra's Shortest Path Algorithm](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/djikstra.py)
 3. [Median Maintenance Using Heaps](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/median_maintenance.py)
-4. [Brute Force Implementation Of Two Sum Problem Using Hashset](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_hashset.py)
+4. [Brute Force Implementation Of Two Sum Problem With Hashset](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_hashset.py)
 5. [Fast Implementation Of Two Sum Problem Using Sorted Array](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_array.py)
 
 #### [Course Slides](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Slides)
