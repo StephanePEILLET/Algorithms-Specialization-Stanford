@@ -1,4 +1,4 @@
-def karatsuba_multiplication(x:int, y:int, verbose:bool=False) -> int:
+def karatsuba_multiplication(x:int, y:int) -> int:
     '''
         Karatsuba Multiplication on two integers.
     '''
@@ -32,27 +32,17 @@ def karatsuba_multiplication(x:int, y:int, verbose:bool=False) -> int:
     else:        # n odd
         result = e1 * 10**(n+1) + e2 + (e3 - e2 - e1) * 10**((n//2)+1)
         
-    # Print several steps of computation of the Karatsuba multiplication.
-    if verbose:
-        print(f'x : {x} and y:{y}')
-        print(f'n : {n}')
-        print('e1:', e1)
-        print('e2:', e2)
-        print('e3:', e3)
-        print('result:', result)
-        print(f'attendu:{int(x) * int(y)}')
-        
     return result 
 
-def verification_karatsuba(x:int, y:int, verbose:bool=False)->None:
+def verification_karatsuba(x:int, y:int)->None:
     '''
         Comparison of my Karatsuba's method and the native python multiplication. 
     '''
     print(f'Multiplication of x: {x} and y: {y}.')
-    print('- Karatsuba:', karatsuba_multiplication(x, y, verbose=verbose))
+    print('- Karatsuba:', karatsuba_multiplication(x, y))
     print('- Native   :', x * y)
     
-    if karatsuba_multiplication(x, y, verbose=False) == x * y:
+    if karatsuba_multiplication(x, y) == x * y:
         print('Same result !')
     else:
         print('Errors ...')
