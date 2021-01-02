@@ -3,71 +3,54 @@ class Node:
         self.index = index
         self.is_explored = False
         self.links = []
-        self.links_rev = []
         self.finish_time = 0
     
     def add_link(self, link_index):
         self.links.append(link_index)
-        
-    def add_rev(self, link_index):
-        self.links_rev.append(link_index)
 
+class SCC:
+    def _init_(self):
+        self.nodes = {}
+        self.SCC_size = 0
+    
 class Graph:
     def __init__(self, nbr_nodes:int):
         self.t = 0
         self.s = 0
         self.leader = {}
-        self.length = nbr_nodes
+        self.nbr_nodes = nbr_nodes
         self.nodes = {k: Node(k) for k in range(nbr_nodes)}
+        self.nodes_reverse = {k: Node(k) for k in range(nbr_nodes)}
+        self.SCCs = []
         
     def add_link_to_node(self, node_index, link_index):
         self.nodes[node_index].add_link(link_index)
-        self.nodes[link_index].add_rev(node_index)
+        self.nodes_reverse[link_index].add_link(node_index)
     
-    def get(self,node_index):
+    def get_node(self,node_index):
         node = self.nodes[node_index]
         print(f'Node: {node.index} -linked to:{node.links} -is explored:{node.is_explored} f(i):{node.finish_time}')
-
-def create_graph(file_name:str, nbr_nodes:int)->dict:
-    '''
-        From SCC file create a graph and reverse graph.
-        SCC extract : 
-                            1 1 
-                            1 2 
-                            1 5 
-                            ...
-                            2 47646      
-                            2 47647 
-                            2 13019 
-                            2 47648 
-                            ...
-    '''
-    file = open(file_name,"r")
-    data = file.readlines()
-    graph = Graph(nbr_nodes)
+        return node
     
-    for line in data:
-        node_start, node_end = list(map(lambda x: int(x),line.split())) 
-        graph.add_link_to_node(node_start, node_end)
+    def DFS(G:dict, start_vertex:int, on_reverse:bool=False)->None:
+        G = graph.nodes if not on_reverse else graph.nodes_reverse
+        G[start_vertex].is_explored = True
+        graph.leader[start_vertex] = G[graph.s]
+        for i in G.keys():
+            for j in G[i].links:
+                if G[j].is_explored:
+                    DFS(graph, j, on_reverse)
+        graph.t += 1
+        graph[start_vertex].finish_time = graph.t 
 
-    return graph        
-        
-def DFS(graph:dict, start_vertex:int)->None:
-    graph[start_vertex].is_explored = True
-    graph.leader[start_vertex] = graph[graph.s]
-    for i in graph.nodes.keys():
-        for j in graph[i].links:
-            if graph[j].is_explored:
-                DFS(graph, j)
-    graph.t += 1
-    graph[start_vertex].finish_time = graph.t 
+    def DFS_Loop(graph:Graph, on_reverse:bool=False)->None:
+        G = graph.nodes if not on_reverse else graph.nodes_reverse
+        for i in range(graph.nbr_nodes, 0, -1):
+            if not G[i].is_explored:
+                graph.s = i
+                DFS(graph, i, on_reverse)    
 
-def DFS_Loop(graph:Graph)->None:
-    for i in range(graph.length, 0, -1):
-        if not graph[i].is_explored:
-            graph.s = i
-            DFS(graph, i)    
-
-def get_SCC(graph:dict)->int:
-    return        
-
+    def Korasaju(graph:dict)->int:
+        DFS_loop(graph_rev)
+        scc = DFS_loop2(graph, num_nodes)
+        return len(graph.SCCs)  
