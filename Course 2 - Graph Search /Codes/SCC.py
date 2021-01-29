@@ -1,56 +1,78 @@
-class Node:
-    def __init__(self, index:int):
-        self.index = index
-        self.is_explored = False
-        self.links = []
-        self.finish_time = 0
-    
-    def add_link(self, link_index):
-        self.links.append(link_index)
+# SCC algorithm with only list and global variables
+import os, sys, threading
 
-class SCC:
-    def _init_(self):
-        self.nodes = {}
-        self.SCC_size = 0
-    
-class Graph:
-    def __init__(self, nbr_nodes:int):
-        self.t = 0
-        self.s = 0
-        self.leader = {}
-        self.nbr_nodes = nbr_nodes
-        self.nodes = {k: Node(k) for k in range(nbr_nodes)}
-        self.nodes_reverse = {k: Node(k) for k in range(nbr_nodes)}
-        self.SCCs = []
-        
-    def add_link_to_node(self, node_index, link_index):
-        self.nodes[node_index].add_link(link_index)
-        self.nodes_reverse[link_index].add_link(node_index)
-    
-    def get_node(self,node_index):
-        node = self.nodes[node_index]
-        print(f'Node: {node.index} -linked to:{node.links} -is explored:{node.is_explored} f(i):{node.finish_time}')
-        return node
-    
-    def DFS(G:dict, start_vertex:int, on_reverse:bool=False)->None:
-        G = graph.nodes if not on_reverse else graph.nodes_reverse
-        G[start_vertex].is_explored = True
-        graph.leader[start_vertex] = G[graph.s]
-        for i in G.keys():
-            for j in G[i].links:
-                if G[j].is_explored:
-                    DFS(graph, j, on_reverse)
-        graph.t += 1
-        graph[start_vertex].finish_time = graph.t 
+SCC_file = '../Data/SCC.txt'
+filepath = os.path.join(os.getcwd(), SCC_file)
+nbr_nodes = 875715
 
-    def DFS_Loop(graph:Graph, on_reverse:bool=False)->None:
-        G = graph.nodes if not on_reverse else graph.nodes_reverse
-        for i in range(graph.nbr_nodes, 0, -1):
-            if not G[i].is_explored:
-                graph.s = i
-                DFS(graph, i, on_reverse)    
+def load_data(filepath:str, nbr_nodes:int)->list:
+    '''
+        Create graph/graph reverse as lists from the input file.
+    '''
+    file = open(filepath,"r")
+    data = file.readlines()
+    G, Grev = [[] for x in range(nbr_nodes)], [[] for x in range(nbr_nodes)]
+    for line in data:
+        node_start, node_end = list(map(lambda x: int(x),line.split())) 
+        G[node_start].append(node_end); Grev[node_end].append(node_start)
+    return G, Grev   
 
-    def Korasaju(graph:dict)->int:
-        DFS_loop(graph_rev)
-        scc = DFS_loop2(graph, num_nodes)
-        return len(graph.SCCs)  
+def DFSrev(Grev:list, i:int)->None:
+    '''
+        Apply DFS from a defined node on Grev.
+        Give a finishing time to every node of the graph to compute "magical ordering" of the nodes.
+    '''
+    global t, is_explored, finishing_time
+    is_explored[i] = True
+    for j in Grev[i]:
+        if not is_explored[j]:
+            DFSrev(Grev, j)
+    t += 1
+    finishing_time[i] = t 
+
+def DFSrev_Loop(Grev:list)->None:
+    '''
+        Loop DFS on every node of the graph Grev.
+    '''
+    global t, is_explored, finishing_time
+    is_explored = [False for x in range(nbr_nodes)]
+    t = 0
+    for i in range(len(Grev)-1, 0, -1):
+        if not is_explored[i]:
+            DFSrev(Grev, i)
+
+def DFS(G:list, i:int)->None:
+    '''
+        Apply DFS from a defined node on G.
+        Find the SCCs in the graph and list all the leaders.
+    '''
+    global is_explored, scc_size
+    is_explored[i] = True
+    for j in G[i]:
+        if is_explored[j]:
+            DFS(G, j)
+    scc_size += 1                      
+
+def DFS_Loop(G:list)->None:
+    '''
+        Loop DFS on every node of the graph G.
+    '''
+    global is_explored, finishing_time, SCCs, scc_size
+    is_explored = [False for x in range(nbr_nodes)]
+    for i in range(len(G)-1, 0, -1):
+        if not is_explored[i]:
+            scc_size = 0
+            DFS(G, i)  
+            SCCs.append(scc_size)
+            
+def Korasaju(filepath:str, nbr_nodes:int)->list:
+    '''
+        Apply Korasaju's two passes algorithms to find the five biggest Strongly Connected Components(SCC).
+    '''
+    global finishing_time, SCCs
+    finishing_time = [[] for x in range(nbr_nodes)]
+    SCCs = []
+    G, Grev = load_data(filepath, nbr_nodes)     # 1 - Let Grev = G with all arcs reversed
+    DFSrev_Loop(Grev)                            # 2 - Run DFS-Loop on Grev. Give a finishing time to every node of the graph to compute "magical ordering" of the nodes.
+    DFS_Loop(G)                                  # 3 - Run DFS-Loop on G. Processinig all nodes by finishing time.
+    return sorted(SCCs, reverse=True)[:5]
