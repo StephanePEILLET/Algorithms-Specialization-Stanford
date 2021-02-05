@@ -1,4 +1,4 @@
-# Algorithms Specialization - Stanford University 
+# Algorithms Specialization
 
 This repository contains slides and implementations of the [Algorithms Specialization](https://www.coursera.org/specializations/algorithms#courses) offered by Stanford University on Coursera.
 
