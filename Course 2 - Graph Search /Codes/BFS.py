@@ -48,6 +48,20 @@ def BFS_shortest_path(graph:dict, start_vertex:int, target_vertex:int)->(int, li
     
     return distance, shortest_path
 
+def BFS_SCC(graph:dict)->(int, list):
+    '''
+        Return the number of connected components and a list with its.
+    '''
+    import random 
+    nodes = list(graph.keys())
+    visited, SCCs = [nodes[0]], []
+    
+    for node in nodes:
+        if node not in visited:
+            visited_order, _ = BFS(graph, node)
+            visited.extend(visited_order); SCCs.append(sorted(visited_order))
+    return len(SCCs), SCCs
+
 def BFS_display(graph:dict, start_vertex:int, target_vertex:int=None)->None:
     '''
         Display order, layers, shortest path obtained thanks to BFS algorithm on a graph.
