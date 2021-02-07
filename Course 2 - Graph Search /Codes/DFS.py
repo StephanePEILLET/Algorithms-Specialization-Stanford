@@ -1,5 +1,3 @@
-from tqdm import tqdm
-
 class Params:
     '''
         Parameters passed during graph exploration
@@ -50,7 +48,7 @@ def DFS_loop(graph:dict)-> list:
     '''
     nodes = list(graph.keys())
     params = Params()
-    for node in tqdm(reversed(nodes)):
+    for node in reversed(nodes):
         if node not in params.explored:
             params.s = node
             params.SCCs[params.s] = []
