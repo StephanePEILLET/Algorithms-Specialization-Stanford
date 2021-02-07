@@ -101,16 +101,10 @@ def load_data(filepath:str)->(dict, dict):
 
 def main(argv):
     filepath = str(argv)
-    if os.path.isfile(filepath):
-        graph, graph_rev = load_data(filepath)
-        threading.stack_size(67108864)
-        sys.setrecursionlimit(2 ** 20)  
-        results = korasaju(graph, graph_rev)
-        return results
-    
-    else:
-        print('File not found ...')
-        sys.exit()
+    graph, graph_rev = load_data(filepath)
+    leaders, SCCs = korasaju(graph, graph_rev)
+    print(sorted(list(map(lambda x: len(x), list(SCCs.values()))), reverse=True)[:5])
+
     
 if __name__ == '__main__':
     main(sys.argv[1])
