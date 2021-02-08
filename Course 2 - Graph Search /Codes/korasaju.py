@@ -42,15 +42,16 @@ def get_finishing_time_graph(graph:dict, finishing_time:dict)->dict:
     return sorted_dict(ft_graph)
 
 
-def korasaju(G:dict, Grev:dict=None, verbose:bool=False)->(list, dict):
+def korasaju(G:dict, Grev:dict=None, use_stack:bool=False,verbose:bool=False)->(list, dict):
     '''
         Return SCCs of a graph with Korasaju's two passes algorithm.
     '''
     if Grev is None:
         Grev = get_reverse_graph(G)
-    Grev_params = DFS_loop(Grev) # Run DFS_loop on reverse graph to compute the "magical ordering" of nodes
+        
+    Grev_params = DFS_loop(Grev, use_stack=use_stack) # Run DFS_loop on reverse graph to compute the "magical ordering" of nodes
     G_finishing_time = get_finishing_time_graph(G, Grev_params.finishing_time)
-    Gft_params = DFS_loop(G_finishing_time)
+    Gft_params = DFS_loop(G_finishing_time, use_stack=use_stack)
     Gft_params.leaders = set(Gft_params.leader.values())
     
     if verbose:
@@ -63,8 +64,9 @@ def korasaju(G:dict, Grev:dict=None, verbose:bool=False)->(list, dict):
         print('Leader : ', Gft_params.leader)
         print('Leaders : ', Gft_params.leaders)
         print('SCCs :', Gft_params.SCCs)
+        return Gft_params
     else:
-        return Gft_params.leaders, Gft_params.SCCs
+        return Gft_params
 
 
 def load_data(filepath:str)->(dict, dict):
@@ -102,7 +104,9 @@ def load_data(filepath:str)->(dict, dict):
 def main(argv):
     filepath = str(argv)
     graph, graph_rev = load_data(filepath)
-    leaders, SCCs = korasaju(graph, graph_rev)
+    
+    # For large input file, I prefer to use stack method in order to avoid problems with depth of recursion.
+    SCCs = korasaju(graph, graph_rev, use_stack=True).SCCs
     print(sorted(list(map(lambda x: len(x), list(SCCs.values()))), reverse=True)[:5])
 
     
