@@ -42,7 +42,7 @@ def get_finishing_time_graph(graph:dict, finishing_time:dict)->dict:
     return sorted_dict(ft_graph)
 
 
-def korasaju(G:dict, Grev:dict=None, use_stack:bool=False,verbose:bool=False)->(list, dict):
+def korasaju(G:dict, Grev:dict=None, use_stack:bool=False,verbose:bool=False)->Params:
     '''
         Return SCCs of a graph with Korasaju's two passes algorithm.
     '''

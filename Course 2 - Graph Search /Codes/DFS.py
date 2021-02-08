@@ -11,7 +11,7 @@ class Params:
         self.finishing_time = {}
         self.SCCs = {}
 
-def DFS_simple_exploration(graph:dict, start_vertex:int, params:Params=None)->list:
+def DFS_simple_exploration(graph:dict, start_vertex:int, params:Params=None)->Params:
     '''
         Apply recursively DFS from a starting node to explored all linked nodes.
     '''
@@ -60,7 +60,7 @@ def DFS(graph:dict, node_i:int, params:Params=False, use_stack:bool=False)->Para
     return params 
 
 
-def DFS_loop(graph:dict, use_stack:bool=False)-> list:
+def DFS_loop(graph:dict, use_stack:bool=False)->Params:
     '''
         Apply DFS on a graph and returned an exploring list.
         Here we apply DFS to every node not explored in the graph.
