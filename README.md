@@ -21,7 +21,7 @@ This repository contains slides and implementations of the [Algorithms Specializ
 1. [Breadth First Search (Layers and Shortest Path)](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/BFS.py)
 2. [Deep First Search](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/DFS.py)  
 3. [Strongly Connected Components with Korasaju's algorithm](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/korasaju.py)
-4. [Dijkstra's Shortest Path Algorithm](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/djikstra.py)
+4. [Dijkstra's Shortest Path Algorithm](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/dijkstra.py)
 5. [Median Maintenance Using Heaps](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/median_maintenance.py)
 6. [Brute Force Implementation Of Two Sum Problem With Hashset](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_hashset.py)
 7. [Fast Implementation Of Two Sum Problem Using Sorted Array](https://github.com/StephanePEILLET/Algorithms_Specialization/blob/main/Course%202%20-%20Graph%20Search%20/Codes/two_sum_array.py)
