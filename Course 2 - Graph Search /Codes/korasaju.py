@@ -56,14 +56,14 @@ def korasaju(G:dict, Grev:dict=None, use_stack:bool=False,verbose:bool=False)->P
     
     if verbose:
         print('---------Graphs---------') 
-        print('Input  :                                ', G)
-        print('Step 1 - Reverse graph :                ', Grev)
-        print('Step 2 - Compute finishing time:        ', sorted_dict(Grev_params.finishing_time))
-        print('Step 3 - Find the leaders for each node:', G_finishing_time)
+        print('Input  :                        ', G)
+        print('Step 1 - Reverse graph :        ', Grev)
+        print('Step 2 - Compute finishing time:', sorted_dict(Grev_params.finishing_time))
+        print('Step 3 - Find the leaders :     ', G_finishing_time)
         print('---------Results--------')
-        print('Leader : ', Gft_params.leader)
-        print('Leaders : ', Gft_params.leaders)
-        print('SCCs :', Gft_params.SCCs)
+        print('Leader for each node:           ', Gft_params.leader)
+        print('Leaders of SCCs in the graphs:  ', Gft_params.leaders)
+        print('SCCs (grouped by leader):       ', Gft_params.SCCs)
         
         return Gft_params
     
