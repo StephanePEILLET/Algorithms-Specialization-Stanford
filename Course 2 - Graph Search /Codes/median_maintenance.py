@@ -1,6 +1,4 @@
 #!/usr/bin/python
-import os
-
 def load_data(filepath)->list:
     '''
         Load data for Mediane Maintenance exercice.
@@ -12,10 +10,6 @@ def load_data(filepath)->list:
     return result
 
 
-def median_maintenance(data:list)->int:
-    '''
-        Compute median of an streaming input list and return the sum modulo 10000.
-    '''
 def median_maintenance(data:list)->int:
     '''
         Compute median of an streaming input list and return the sum modulo 10000.
