@@ -16,12 +16,16 @@ def median_maintenance(data:list)->int:
     '''
         Compute median of an streaming input list and return the sum modulo 10000.
     '''
+def median_maintenance(data:list)->int:
+    '''
+        Compute median of an streaming input list and return the sum modulo 10000.
+    '''
     import heapq, math
     
     medians, h_low, h_high = [], [], []
 
     for index, el in enumerate(data):
-        k = math.floor(index/2)
+        half_index = math.floor(index/2)
         
         h_low_max = -heapq.nsmallest(1, h_low)[0] if h_low else float('-inf')
         h_high_min = heapq.nsmallest(1, h_high)[0] if h_high else float('inf')
@@ -33,14 +37,14 @@ def median_maintenance(data:list)->int:
         else:
             heapq.heappush(h_low, -el)
 
-        if len(h_high) - len(h_low) > 1:
+        if len(h_high)-1 > len(h_low):
             h_low_min = heapq.heappop(h_high)
             heapq.heappush(h_low, -h_low_min)
-        elif len(h_low) - len(h_high) > 1:
+        elif len(h_low)-1 > len(h_high):
             h_low_max = -heapq.heappop(h_low)
             heapq.heappush(h_high, h_low_max)
 
-        if k > len(h_low) - 1:
+        if half_index > len(h_low)-1:
             median = heapq.heappop(h_high)
             heapq.heappush(h_high, median)
         else:
