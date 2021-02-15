@@ -12,32 +12,26 @@ def load_data(filepath)->list:
     return result
 
 
-def median_maintenance(numbers:list)->int:
+def median_maintenance(data:list)->int:
     '''
         Compute median of an streaming input list and return the sum modulo 10000.
     '''
-    import heapq
-    import math
+    import heapq, math
     
     medians, h_low, h_high = [], [], []
 
-    for i, n in enumerate(numbers):
-        try:
-            h_low_max = -heapq.nsmallest(1, h_low)[0]
-        except IndexError:
-            h_low_max = float('-inf')
+    for index, el in enumerate(data):
+        k = math.floor(index/2)
+        
+        h_low_max = -heapq.nsmallest(1, h_low)[0] if h_low else float('-inf')
+        h_high_min = heapq.nsmallest(1, h_high)[0] if h_high else float('inf')
 
-        try:
-            h_high_min = heapq.nsmallest(1, h_high)[0]
-        except IndexError:
-            h_high_min = float('inf')
-
-        if n < h_low_max:
-            heapq.heappush(h_low, -n)
-        elif n > h_high_min:
-            heapq.heappush(h_high, n)
+        if el < h_low_max:
+            heapq.heappush(h_low, -el)
+        elif el > h_high_min:
+            heapq.heappush(h_high, el)
         else:
-            heapq.heappush(h_low, -n)
+            heapq.heappush(h_low, -el)
 
         if len(h_high) - len(h_low) > 1:
             h_low_min = heapq.heappop(h_high)
@@ -45,9 +39,6 @@ def median_maintenance(numbers:list)->int:
         elif len(h_low) - len(h_high) > 1:
             h_low_max = -heapq.heappop(h_low)
             heapq.heappush(h_high, h_low_max)
-
-        # Position of the median
-        k = math.floor(i / 2)
 
         if k > len(h_low) - 1:
             median = heapq.heappop(h_high)
@@ -58,4 +49,4 @@ def median_maintenance(numbers:list)->int:
 
         medians.append(median)
 
-    return sum(medians) % 10000
+    return sum(medians)%10000
