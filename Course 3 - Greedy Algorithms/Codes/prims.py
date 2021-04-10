@@ -27,7 +27,7 @@ def load_data(filepath:str)->(dict, int, int):
 
 def prims(graph:dict, start_vertex:int=None)->(list, int):
     '''
-        Prim's Algorithms straigthforward implementation for finding MST in a graph.
+        Prim's Algorithms straigthforward implementation with heap data structure for finding MST in a graph.
     '''
     import random
     from heapq import heappush, heappop

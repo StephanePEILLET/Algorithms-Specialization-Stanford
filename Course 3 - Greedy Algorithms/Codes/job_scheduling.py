@@ -1,8 +1,9 @@
+import pandas as pd
+
 def load_data(filepath:str)->list:
     '''
         Load the list of processes and return their number, their weigth and their length.
     '''
-    import pandas as pd
     file = open(filepath, 'r')
     lines = file.readlines()
     n_jobs = int(lines[0].strip())
